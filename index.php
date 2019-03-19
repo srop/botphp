@@ -2,11 +2,11 @@
 header('Content-Type:application/json');
 function processMessage($update) {
     if($update["result"]["action"] == ""){
-        $fp = $parameters('request.log',$update["resutl"]["parameters"]["msg"]);
+        $fp = file_get_contents('request.log',$update["resutl"]["parameters"]["msg"]);
         
         sendMessage(array(
             "source" => $update["result"]["source"],
-            "speech" => "Hello from webhook",
+            "speech" => $update["result"]["parameters"]["msg"],
             "displayText" => "........TEXT HERE.........",
             "contextOut" => array()
         ));
