@@ -1,7 +1,7 @@
 <?php 
 header('Content-Type:application/json');
 function processMessage($update) {
-    if($update["result"]["action"] == ""){
+    if(empty($update["result"]["action"])){
         $fp = file_get_contents('request.log',$update["resutl"]["parameters"]["msg"]);
         
         sendMessage(array(
